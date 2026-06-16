@@ -33,6 +33,33 @@
   }
   .hero p{ color:var(--azulo);opacity:.7;font-size:13px;margin-top:6px;letter-spacing:.5px; }
 
+  /* Próximos eventos */
+  .eventos{
+    margin:6px 18px 18px;
+    padding:18px 16px;
+    background:linear-gradient(135deg, rgba(43,201,222,.12), rgba(180,41,201,.10));
+    border:1.5px solid rgba(46,90,134,.25);
+    border-radius:16px;
+  }
+  .ev-cabecera{
+    text-align:center;font-family:'Caveat',cursive;font-weight:700;
+    color:var(--azul);font-size:28px;margin-bottom:12px;line-height:1;
+  }
+  .ev-item{
+    padding:10px 0;
+    border-top:1px dashed rgba(46,90,134,.25);
+  }
+  .ev-item:first-of-type{ border-top:none; }
+  .ev-fecha{
+    font-family:'Montserrat';font-weight:700;font-size:12px;
+    color:#B429C9;text-transform:capitalize;letter-spacing:.3px;
+  }
+  .ev-titulo{
+    font-family:'Caveat',cursive;font-weight:700;
+    color:var(--azul);font-size:24px;line-height:1.05;margin-top:1px;
+  }
+  .ev-detalle{ font-size:14px;color:var(--azulo);opacity:.8;margin-top:2px; }
+
   nav.chips{
     position:sticky;top:0;z-index:10;
     display:flex;gap:8px;overflow-x:auto;padding:12px 22px;
@@ -92,6 +119,17 @@
     <h1>la carta</h1>
     <p>LA ESTACIÓN · GÁLVEZ</p>
   </header>
+
+  
+    <section class="eventos">
+      <h2 class="ev-cabecera">✦ Próximos eventos ✦</h2>
+      
+      <div class="ev-item">
+        <div class="ev-fecha">sábado, 20 de junio · 21:00</div>
+        <div class="ev-titulo">BANDA DE ROCK</div>
+        <div class="ev-detalle">HAY QUE ARMAR ESCENARIO</div>
+      </div>
+    </section>
 
   <nav class="chips"><button class="navchip" onclick="irA(0)">la carta cafetería</button><button class="navchip" onclick="irA(1)">desayunos & meriendas</button><button class="navchip" onclick="irA(2)">bar</button><button class="navchip" onclick="irA(3)">comida</button><button class="navchip" onclick="irA(4)">hamburguesas & pizzas</button><button class="navchip" onclick="irA(5)">sándwiches & postres</button><button class="navchip" onclick="irA(6)">bebidas</button></nav>
 
