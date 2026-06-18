@@ -111,1119 +111,484 @@
     .pagina{ animation:sube .5s both; }
     @keyframes sube{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
   }
+
+  /* ---- Portada con los 3 botones ---- */
+  .portada{
+    position:fixed; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:30px;
+    background:linear-gradient(160deg,#1E3F61 0%,#2E5A86 45%,#B429C9 100%);
+    background-size:cover; background-position:center;
+  }
+  .portada-cap{
+    background:rgba(15,25,40,.42); backdrop-filter:blur(3px);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:26px; padding:40px 28px; max-width:430px; width:100%;
+    box-shadow:0 12px 40px rgba(0,0,0,.35);
+  }
+  .port-tit{ font-family:'Montserrat';font-weight:800;color:#fff;font-size:30px;letter-spacing:-1px;margin-top:10px;line-height:1.1; }
+  .port-sub{ color:rgba(255,255,255,.82);font-size:12px;letter-spacing:4px;margin-bottom:30px; }
+  .port-botones{ display:flex;flex-direction:column;gap:14px; }
+  .port-btn{
+    font-family:'Montserrat';font-weight:700;font-size:18px;
+    padding:18px 16px;border:none;border-radius:16px;cursor:pointer;
+    background:#fff;color:#1E3F61;
+    box-shadow:0 6px 20px rgba(0,0,0,.28);
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    transition:transform .12s ease;
+  }
+  .port-btn:active{ transform:scale(.96); }
+  .port-btn span{ font-size:22px; }
+  .volver{
+    position:sticky;top:0;z-index:20;width:100%;display:block;
+    background:var(--azulo);color:#fff;border:none;padding:13px;
+    font-family:'Montserrat';font-weight:600;font-size:14px;cursor:pointer;letter-spacing:.3px;
+  }
+  .volver:active{ filter:brightness(1.15); }
+  .marca.chica{ width:62px;height:62px;margin-bottom:10px; }
+  .marca.chica b{ font-size:27px; }
+
+  /* ---- Carta del Bar: fotos oficiales ---- */
+  .fotos-wrap{ max-width:560px; margin:0 auto; background:#ece7dd; }
+  .foto-carta{ display:block; width:100%; height:auto; }
 </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="marca"><b>LE</b></div>
-    <h1>la carta</h1>
-    <p>LA ESTACIÓN · GÁLVEZ</p>
-  </header>
+  <!-- PORTADA: pantalla de bienvenida con los 3 botones -->
+  <div id="portada" class="portada">
+    <div class="portada-cap">
+      <div class="marca"><b>LE</b></div>
+      <h1 class="port-tit">La Estación</h1>
+      <p class="port-sub">GÁLVEZ</p>
+      <div class="port-botones">
+        <button class="port-btn" onclick="verCarta('bar')"><span>🍴</span> Carta del Bar</button>
+        <button class="port-btn" onclick="verCarta('tragos')"><span>🍸</span> Carta de Tragos</button>
+        <button class="port-btn" onclick="verCarta('eventos')"><span>📅</span> Eventos</button>
+      </div>
+    </div>
+  </div>
 
-  
+  <!-- CARTA DEL BAR -->
+  <div id="cartaBar" class="vista" style="display:none">
+    <button class="volver" onclick="verPortada()">← Inicio</button>
+    <div class="fotos-wrap"><img class="foto-carta" src="carta-1.jpg" alt="Cafetería" loading="eager" decoding="async"><img class="foto-carta" src="carta-2.jpg" alt="Desayunos" loading="lazy" decoding="async"><img class="foto-carta" src="carta-3.jpg" alt="Bar" loading="lazy" decoding="async"><img class="foto-carta" src="carta-4.jpg" alt="Comida" loading="lazy" decoding="async"><img class="foto-carta" src="carta-5.jpg" alt="Hamburguesas y Pizzas" loading="lazy" decoding="async"><img class="foto-carta" src="carta-6.jpg" alt="Sándwiches y Postres" loading="lazy" decoding="async"><img class="foto-carta" src="carta-7.jpg" alt="Bebidas" loading="lazy" decoding="async"></div>
+  </div>
 
-  <nav class="chips"><button class="navchip" onclick="irA(0)">la carta cafetería</button><button class="navchip" onclick="irA(1)">desayunos & meriendas</button><button class="navchip" onclick="irA(2)">bar</button><button class="navchip" onclick="irA(3)">comida</button><button class="navchip" onclick="irA(4)">hamburguesas & pizzas</button><button class="navchip" onclick="irA(5)">sándwiches & postres</button><button class="navchip" onclick="irA(6)">bebidas</button></nav>
+  <!-- CARTA DE TRAGOS -->
+  <div id="cartaTragos" class="vista" style="display:none">
+    <button class="volver" onclick="verPortada()">← Inicio</button>
+    <header class="hero">
+      <div class="marca chica"><b>LE</b></div>
+      <h1>tragos</h1>
+      <p>LA ESTACIÓN · GÁLVEZ</p>
+    </header>
+    <div class="wrap">
+      <section class="pagina"><h2 class="titulo">tragos<span class="punto">.</span></h2><div class="filas">
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VASO DE FERNET</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA RED</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$8.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA BLACK</span>
+          <span class="desc">JOHNNIE/JAMESON BLACK</span>
+        </div>
+        <span class="dots"></span><span class="precio">$10.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA JAMESON</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$100.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA JACK</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$10.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA BAILEYS</span>
+          <span class="desc">BAILEYS/TIA MARIA/AMARULA</span>
+        </div>
+        <span class="dots"></span><span class="precio">$80.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA RON</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$8.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">TOC TOC</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MEDIDA FERNET</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$3.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MOJITO</span>
+          <span class="desc">CLASICO/COCO/FRUTOS ROJOS/MARACUYA</span>
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">NEGRONI</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">BOULEVARDIER</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$10.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">CAIPIRIÑA/CAIPIROSKA</span>
+          <span class="desc">CLASICA/MARACUYA/FRUTOS ROJOS</span>
+        </div>
+        <span class="dots"></span><span class="precio">$5.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">PINK/TOM COLLINS</span>
+          <span class="desc">FRUTOS ROJOS/ LIMON</span>
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">APEROL SPRITZ</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">ORANGE HAWAIIAN</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">BUFFALO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">CIELO ROSADO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">GIN TONIC</span>
+          <span class="desc">FRUTA A ELECCION</span>
+        </div>
+        <span class="dots"></span><span class="precio">$8.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MARGARITA/DEVIL MARGARITA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$5.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MIMOSA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$4.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">JAGER BOMB/JAGERITO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">CUBA LIBRE</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">NEGOCIOS CON PLACER</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">NECROMANCER</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$8.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">CAPRISOUR</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$10.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">WHISKY SOUR</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$10.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VERMUT</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$5.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">GANCIA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$5.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">PIÑA COLADA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$8.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">DAIQUIRI</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$7.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MARTINI EXPRESSO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">MARTINI</span>
+          <span class="desc">DRY/VESPER</span>
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">RUSO BLANCO/NEGRO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">COPA VINO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$5.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">PINTA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$5.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">SANTA JULIA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$16.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO DURET</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO SINERGIA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO MASTROENI</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$20.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO GRAFFIGNA</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$21.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO ODILE</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO AVATAR</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO ESCORADO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO KAIKEN</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$21.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO LAS PIEDRAS</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO NAZARENO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$30.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO SIN RODEO</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$14.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO TRASAMOR</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">VINO TONEL 14</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$15.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">CHAMPAGNE MOULINE BLUE</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$30.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">GARIBALDI</span>
+          <span class="desc">CAMPARI CON NARANJA</span>
+        </div>
+        <span class="dots"></span><span class="precio">$6.000</span>
+      </div>
+      <div class="fila">
+        <div class="fnom">
+          <span class="nom">COPA BAILEYS</span>
+          
+        </div>
+        <span class="dots"></span><span class="precio">$10.000</span>
+      </div></div></section>
+      <p class="ig">@laestacion.galvez</p>
+    </div>
+  </div>
 
-  <div class="wrap">
-    
-      <section class="pagina" id="sec0">
-        <h2 class="titulo">la carta cafetería<span class="punto">.</span></h2>
-        
-        <h3 class="sub">COFFEE TIME</h3>
-        <p class="nota">Espresso $3.000 · Jarrita $3.500 · Doble $4.000</p>
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Espresso</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Cortado espresso</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Jarrita café</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Cortado jarrita</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Lagrima jarrita</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Café con leche</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Latte doble</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Expresso doble</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Long black</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Americano</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Cortado doble</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Lagrima doble</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Té/Mate cocido c/agua</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$2.200</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Té/Mate cocido c/leche</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$2.700</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Chocolatada f/c</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Submarino</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Affogato</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Café leche frozen</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Cappuccino</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Espresso tonic</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Espresso tonic c/pomelo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Orange coffee</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div></div>
-        <h3 class="sub">PROMOS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Café + Exprimido + Medialuna de JyQ</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$11.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Café + Exprimido + Croissant</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$11.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Café + Exprimido + 1 Tostada</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Café + Exprimido + Tostado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$15.000</span>
-          </div></div>
-      </section>
-      <section class="pagina" id="sec1">
-        <h2 class="titulo">desayunos & meriendas<span class="punto">.</span></h2>
-        
-        
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Tostado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Carlito</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Medialuna</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$2.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Medialuna con JyQ</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Croissant clásico d/s</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Croissant con JyQ</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Tostada con mermelada y queso blanco</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Tostada con huevo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Scons</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$2.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Huevo revuelto</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Avocado toast</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$10.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Desayuno proteico</span>
-              <span class="desc">huevos revueltos, palta, tomate cherry, jamón y queso</span>
-            </div>
-            <span class="dots"></span><span class="precio">$10.000</span>
-          </div></div>
-        
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Sugerencia: croissant relleno</span>
-              <span class="desc">rúcula, crudo y parmesano · crudo y ananá · vitel toné</span>
-            </div>
-            <span class="dots"></span><span class="precio">$9.000</span>
-          </div></div>
-      </section>
-      <section class="pagina" id="sec2">
-        <h2 class="titulo">bar<span class="punto">.</span></h2>
-        
-        <h3 class="sub">ENTRADITAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Maní saborizado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$1.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Maní salado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$1.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Papas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$1.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Palitos</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$1.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Aceitunas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$1.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Hummus</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Cazuela de salchichas</span>
-              <span class="desc">con salsa</span>
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div></div>
-        <h3 class="sub">ENSALADAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Mixta</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Ensalada César</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div></div>
-        <h3 class="sub">TABLA DE FIAMBRES</h3>
-        <p class="nota">1 persona $12.500 · 2 personas $25.000 · 3 personas $37.500 · 4 personas $50.000</p>
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Chorizo seco</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Queso cáscara roja</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Mortadela</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bondiola</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Jamón crudo</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Jamón cocido</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Encurtidos</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Escabeche</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Pan</span>
-              
-            </div>
-            
-          </div></div>
-      </section>
-      <section class="pagina" id="sec3">
-        <h2 class="titulo">comida<span class="punto">.</span></h2>
-        
-        <h3 class="sub">TABLA DE MILANESAS</h3>
-        <p class="nota">2 personas $30.000 · con cheddar $33.000</p>
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Milanesa de pollo</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Milanesa de vaca</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Fritas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div></div>
-        <h3 class="sub">MILANESAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Napolitana + fritas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$19.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Huevo + fritas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$19.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Roquefort + fritas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$19.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Común + fritas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$16.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Tortilla de papa</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$15.000</span>
-          </div></div>
-        <h3 class="sub">ADEREZOS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Alioli</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Pesto italiano</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Mayonesa</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Kepchup</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Mostaza</span>
-              
-            </div>
-            
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Salsa golf</span>
-              
-            </div>
-            
-          </div></div>
-        <h3 class="sub">FRITURAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Papas fritas (para 2)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Fritas con cheddar</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Papas "La Estación"</span>
-              <span class="desc">con bondiola desmechada y yogurt griego al limón</span>
-            </div>
-            <span class="dots"></span><span class="precio">$18.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Aros de cebolla</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bastones de muzzarella</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Rabas + fritas (para 2)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$30.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Langostinos + fritas (para 2)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$35.000</span>
-          </div></div>
-      </section>
-      <section class="pagina" id="sec4">
-        <h2 class="titulo">hamburguesas & pizzas<span class="punto">.</span></h2>
-        
-        <h3 class="sub">HAMBURGUESAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Común</span>
-              <span class="desc">jamón, queso</span>
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Especial</span>
-              <span class="desc">jamón, queso, lechuga, tomate, huevo</span>
-            </div>
-            <span class="dots"></span><span class="precio">$14.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Champiñón</span>
-              <span class="desc">champiñón, cheddar, panceta</span>
-            </div>
-            <span class="dots"></span><span class="precio">$16.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Cebolla caramelizada</span>
-              <span class="desc">cebolla caramelizada, cheddar, panceta</span>
-            </div>
-            <span class="dots"></span><span class="precio">$16.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Doble</span>
-              <span class="desc">pepinillo, doble cheddar, panceta</span>
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Sugerencia: común o especial con pan de croissant</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$14.000</span>
-          </div></div>
-        <h3 class="sub">MENÚ INFANTIL</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bastoncitos de pollo + fritas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div></div>
-        <h3 class="sub">PIZZAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Muzzarella</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Palmito</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Rúcula c/ crudo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Roquefort</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Especial c/ o sin huevo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Anchoas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Pollo y verdeo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Huevos y panceta</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Champiñones y roquefort</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div></div>
-      </section>
-      <section class="pagina" id="sec5">
-        <h2 class="titulo">sándwiches & postres<span class="punto">.</span></h2>
-        
-        <h3 class="sub">SÁNDWICHES</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Simple de manteca</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Tostado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Carlito</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Triple mila</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Carlito de pollo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$12.000</span>
-          </div></div>
-        <h3 class="sub">FOCACCIAS & CIABATTAS</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Jamón cocido</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Mortadela</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bondiola</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Crudo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Lomo ahumado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Mortadela + berenjenas</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$16.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Lengua a la vinagreta</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$16.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bondiola desmechada</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$16.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Veggie</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$13.000</span>
-          </div></div>
-        <h3 class="sub">POSTRES</h3>
-        <p class="nota">adicional con crema o dulce $8.000</p>
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Postres Kale (consultar disponibilidad)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Tiramisú</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Chocotorta</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bon bon helado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Bochita americana</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Brownie con helado</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Peras al Mabec (con americana)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Flan casero</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Budín casero</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div></div>
-      </section>
-      <section class="pagina" id="sec6">
-        <h2 class="titulo">bebidas<span class="punto">.</span></h2>
-        
-        <h3 class="sub">SIN ALCOHOL</h3>
-        
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Agua s/gas 500ml</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Agua c/gas 500ml</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Agua saborizada 500ml</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Coca Cola 500ml</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$4.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Agua s/gas 1.5lt</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Agua saborizada 1.5lt</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Gaseosas de 1.25lt</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Gaseosas de 350ml</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Exprimido pomelo</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Exprimido naranja</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Exprimido naranja mango</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Exprimido naranja frutilla</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Jarra limonada frutos rojos</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$10.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Jarra limonada</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Licuado durazno con agua/leche</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Licuado frutilla con agua/leche</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Vaso de limonada</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$3.500</span>
-          </div></div>
-        <h3 class="sub">CON ALCOHOL</h3>
-        <p class="nota">Santa Fe / Schneider / Imperial x473 $5.000 · Miller / Imperial Lager / Heineken x710 y Pininas x330 $6.500</p>
-        <div class="filas">
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Santa Fe x473 (rubia, pilsen)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Schneider x473</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Imperial x473 (roja, extra lager, ipa, golden, cream stout)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$5.000</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Miller x710</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Imperial Lager x710</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Heineken x710</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Pininas x330 (miller, heineken)</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$6.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Santa Fe x1L</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$7.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Miller x1L</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$8.500</span>
-          </div>
-          <div class="fila">
-            <div class="fnom">
-              <span class="nom">Heineken x1L</span>
-              
-            </div>
-            <span class="dots"></span><span class="precio">$10.000</span>
-          </div></div>
-      </section>
-    <p class="ig">@laestacion.galvez</p>
+  <!-- EVENTOS -->
+  <div id="cartaEventos" class="vista" style="display:none">
+    <button class="volver" onclick="verPortada()">← Inicio</button>
+    <header class="hero">
+      <div class="marca chica"><b>LE</b></div>
+      <h1>eventos</h1>
+      <p>LA ESTACIÓN · GÁLVEZ</p>
+    </header>
+    <div class="wrap">
+      <p class="nota" style="text-align:center;padding:50px 20px;font-size:15px">Por ahora no hay eventos agendados.<br>¡Seguinos para enterarte de lo que viene! 🎶</p>
+      <p class="ig">@laestacion.galvez</p>
+    </div>
   </div>
 
 <script>
   function irA(i){ document.getElementById("sec"+i).scrollIntoView({behavior:"smooth"}); }
+  function verCarta(cual){
+    document.getElementById("portada").style.display = "none";
+    document.getElementById("cartaBar").style.display = cual === "bar" ? "block" : "none";
+    document.getElementById("cartaTragos").style.display = cual === "tragos" ? "block" : "none";
+    document.getElementById("cartaEventos").style.display = cual === "eventos" ? "block" : "none";
+    window.scrollTo(0, 0);
+  }
+  function verPortada(){
+    document.getElementById("portada").style.display = "flex";
+    document.getElementById("cartaBar").style.display = "none";
+    document.getElementById("cartaTragos").style.display = "none";
+    document.getElementById("cartaEventos").style.display = "none";
+    window.scrollTo(0, 0);
+  }
 </script>
 </body>
 </html>
